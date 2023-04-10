@@ -28,3 +28,25 @@ df = spark.read.format(file_type) \
   .load(file_location)
 
 display(df)
+
+
+# Create a view or table
+
+temp_table_name = "cricket_data"
+
+df.createOrReplaceTempView(temp_table_name)
+
+
+%sql
+-- #2.  Run the following query in Hive or Impala
+
+
+-- # Total number of ODI played during the time frame
+SELECT COUNT(*) as total_matches 
+FROM cricket_data;
+
+
+# Total number of Teams
+# Run the following analysis
+# Which team won the most ODI during the time-frame?
+# Which team won the most ODI during each decade 71-80, 81-90, 91-2000, 2001-2010, 2011-2018?
